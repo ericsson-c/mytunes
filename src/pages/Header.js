@@ -12,9 +12,9 @@ import { useCookies } from 'react-cookie';
 
 import '../stylesheets/Header.css';
 
-//const apiURL = 'http://mytunes-api.herokuapp.com';
+const apiURL = 'https://mytunes-api.herokuapp.com';
 //const apiURL = 'http://localhost:3000';
-const apiURL = 'https://mytunes-frontend.herokuapp.com';
+//const apiURL = 'https://mytunes-frontend.herokuapp.com';
 
 export default function Header() { 
 

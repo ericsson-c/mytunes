@@ -12,9 +12,9 @@ import Cookie from 'universal-cookie';
 
 import '../stylesheets/Upload.css';
 
-//const apiURL = 'http://mytunes-api.herokuapp.com'
+const apiURL = 'https://mytunes-api.herokuapp.com'
 //const apiURL = 'http://localhost:3000';
-const apiURL = 'http://mytunes-frontend.herokuapp.com';
+//const apiURL = 'https://mytunes-frontend.herokuapp.com';
 
 
 class Upload extends React.Component {

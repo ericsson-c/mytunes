@@ -38,7 +38,7 @@ class CreatePlaylist extends React.Component {
         fetch(apiURL + '/api/songs')
         .then(res => res.json())
         .then(songs => {
-            console.log('fetching all songs...');
+            console.log('fetching all songs...', songs);
             this.setState({songs: songs});
         })
         .catch(err => console.log(err));

@@ -39,7 +39,7 @@ class CreatePlaylist extends React.Component {
         .then(res => res.json())
         .then(songs => {
             console.log('fetching all songs...', songs);
-            this.setState({songs: songs});
+            this.setState({songs: songs.songs});
         })
         .catch(err => console.log(err));
     }

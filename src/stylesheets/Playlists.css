@@ -1,0 +1,270 @@
+.container {
+    background-color: #282c34;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: row;
+    /*align-items: center;
+    justify-content: center;*/
+    font-size: calc(10px + 2vmin);
+    color: white;
+    padding-top: 10px;
+}
+
+#display-playlists {
+    z-index: 1;
+    background-color: #282c34;
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    font-size: calc(10px + 2vmin);
+    color: white;
+    margin: auto;
+    width: 90%;
+    margin-top: 0px !important;
+    z-index: 1;
+}
+
+.dropdown span {
+    display: flex;
+}
+
+
+.dropdown .dropbtn {
+    font-size: 16px; 
+    border: none;
+    outline: none;
+    color: white;
+    padding: 0px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+}
+
+
+.dropbtn:hover + .dropdown-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown .dropdown-content:hover {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown {
+    position: relative;
+    z-index: 3;
+}
+
+.dropdown-content {
+    max-width: 150px;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    display: none;
+    background-color: rgb(19, 13, 13);
+    font-size: 15px;
+    text-align: left;
+    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+    position: absolute;
+    left: 100px;
+    top: 50px
+}
+
+.dropdown-content ul {
+    list-style: none;
+}
+
+
+.dropdown-content button:hover {
+    background-color: #282c34;
+    
+}
+
+.dropdown-content button {
+    text-decoration: none;
+    color: white;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 10px;
+    background-color: inherit;
+    background: none;
+    border: none;
+}
+
+.plus-btn {
+    background-color: inherit;
+    border: 2px solid white;
+    border-radius: 20px;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    font-size: 40px;
+    height: 40px;
+    width: 40px;
+    margin-top: 32px;
+    margin-left: 18px;
+}
+
+.plus-btn:hover {
+    background-color: rgb(19, 13, 13);
+}
+
+.create-playlist {
+    display: none;
+    position: absolute;
+    background-color: rgb(78, 78, 78);
+    padding: 5px;
+    font-size: 12px;
+    left: 450px;
+    top: 70px
+}
+
+.create-playlist a {
+    text-decoration: none;
+    color: white;
+}
+
+.plus-btn:hover + .create-playlist {
+    display: block;
+}
+
+.plus-btn a {
+    text-decoration: none;
+    color: white;
+}
+
+.all-songs h1{
+    font-size: 40px;
+}
+
+.all-songs .caret {
+    font-size: 30px !important;
+    padding-left: 15px;
+    padding-top: 6px;
+}
+
+.song-table {
+    display: flex;
+    flex-direction: column !important;
+    background-color: rgb(21, 20, 20);
+    padding: 20px;
+    padding-bottom: 40px;
+
+}
+
+.song-table table {
+    border-collapse: collapse;
+    background-color: rgb(21, 20, 20);
+    /*background-color: #282c34;*/
+    font-size: 15px;
+    display: block !important;
+    overflow-y: scroll;
+    max-height: 50vh;
+}
+
+
+#song-table-header {
+    border: none !important;
+    font-size: 15px !important;
+    background-color: #282c34;
+    /*background-color: rgb(21, 20, 20) !important*/;
+    position: sticky;
+    top: 0;
+    z-index: 2 !important;
+}
+
+#song-table-header td {
+    padding: 10px;
+    width: 30%;
+}
+
+.song-table tr {
+    /*border: 2px solid rgb(21, 20, 20);*/
+    z-index: 5;
+    width: 100%;
+}
+
+.song-table td {
+    padding: 20px;
+    width: 30%;
+}
+
+#search-bar {
+    padding: 5px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.song-name {
+    width: 40% !important;
+}
+
+
+/*
+#your-playlists {
+    margin-top: 72px;
+    width: 100px;
+    height: 60vh;
+    margin-left: 0;
+    margin-right: 50px !important;
+    padding: 30px;
+    padding-top: 10px;
+    font-size: 15px;
+    background-color: rgb(19, 13, 13) !important;
+    justify-content: center;
+    text-align: center;
+}
+
+#your-playlists table td {
+    font-size: 15px;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+}
+
+#your-playlists table tr {
+    
+}
+
+#your-playlists table td a {
+    text-decoration: none;
+    color: white;
+}
+*/
+
+/*
+#create-playlist {
+    margin-top: 57px;
+    width: 160px;
+    margin-left: max(10px, 5%);
+    margin-right: 50px !important;
+    padding: 30px;
+    padding-top: 10px;
+    font-size: 15px;
+    background-color: rgb(19, 13, 13) !important;
+    height: 350px;
+    justify-content: center;
+}
+
+
+#create-playlist input {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 5px;
+}
+
+#create-playlist h2{
+    font-size: 20px;
+    text-align: center;
+}
+
+#create-playlist div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+*/
+

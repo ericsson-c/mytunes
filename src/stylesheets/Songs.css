@@ -1,0 +1,131 @@
+.container {
+    background-color: #282c34;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: row;
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    font-size: calc(10px + 2vmin);
+    color: white;
+    position: relative;
+    padding-top: 10px;
+}
+
+#browse-songs span {
+    display: flex;
+}
+
+#browse-songs span a {
+    text-decoration: none;
+    color: white;
+}
+
+#browse-songs span button {
+    background-color: inherit;
+    border: 2px solid white;
+    border-radius: 20px;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    font-size: 40px;
+    height: 40px;
+    width: 40px;
+    margin-top: 32px;
+    margin-left: 18px;
+}
+
+#browse-songs span button:hover {
+    background-color: rgb(78, 78, 78);
+}
+
+#browse-songs span div {
+    display: none;
+    position: absolute;
+    background-color: rgb(78, 78, 78);
+    padding: 5px;
+    font-size: 12px;
+    left: 370px;
+    top: 70px
+}
+
+#browse-songs span button:hover + .upload-song {
+    display: block;
+}
+
+
+#browse-songs {
+    background-color: #282c34;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    font-size: calc(10px + 2vmin);
+    color: white;
+    position: relative;
+    margin: auto;
+    width: 90%;
+
+}
+
+
+.all-songs {
+    font-size: 40px;
+}
+
+.song-table {
+    display: flex;
+    flex-direction: column !important;
+    background-color: rgb(21, 20, 20);
+    padding: 20px;
+    padding-bottom: 40px;
+
+}
+
+.song-table table {
+    border-collapse: collapse;
+    background-color: rgb(21, 20, 20);
+    /*background-color: #282c34;*/
+    font-size: 15px;
+    display: block !important;
+    overflow-y: scroll;
+    max-height: 50vh;
+}
+
+
+#song-table-header {
+    border: none !important;
+    font-size: 15px !important;
+    background-color: #282c34;
+    /*background-color: rgb(21, 20, 20) !important*/;
+    position: sticky;
+    top: 0;
+    z-index: 100 !important;
+}
+
+#song-table-header td {
+    padding: 10px;
+    width: 30%;
+}
+
+.song-table tbody tr {
+    /*border: 2px solid rgb(21, 20, 20);*/
+    z-index: 5;
+    width: 100%;
+}
+
+.song-table tbody td {
+    padding: 20px;
+}
+
+#search-bar {
+    padding: 5px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.song-name {
+    width: 40%;
+}
+
+

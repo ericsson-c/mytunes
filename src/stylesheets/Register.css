@@ -1,0 +1,95 @@
+.register {
+    background-color: #282c34;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    position: relative;
+
+}
+
+.register img {
+    height: 30px;
+    width: 30px;
+    margin: 10px;
+    padding-left: 8 px;
+}
+
+.register p {
+    margin: 10px;
+}
+
+.span {
+    display: inline-flex !important;
+    position: relative;
+    top: -25px;
+}
+
+.register-form {
+    position: relative;
+    display: block;
+    border: 2px solid black;
+    padding: 60px;
+    background-color: rgb(21, 20, 20);
+    height: 50vh;
+    margin-top: -20px;
+}
+
+.register-form-div button {
+    height: 25px;
+    width: 45%;
+    margin: auto;
+    margin-top: 5px;
+    text-align: center;
+    background-color: rgb(70, 68, 68);
+    padding: 2px;
+    color: white;
+    
+}
+
+.register-form-div {
+    min-width: 100px;
+    padding-bottom: 20px;
+    display: flex;
+}
+
+.other-page {
+    width: 200px;
+    font-size: 14px;
+    text-align: center;
+    padding-top: 20px;
+    
+}
+
+.other-page a {
+    text-decoration: none;
+    color: rgb(165, 89, 165);
+}
+
+.other-page div {
+    padding-bottom: 5px;
+}
+
+.register-form input {
+    padding: 6px;
+    width: 200px;
+    background-color: rgb(70, 68, 68);
+    color: white;
+}
+
+#usernameTextField {
+    width:  250x;
+    height: 40px;
+}
+
+.error-msg {
+    width: 200px;
+    font-size: 15px;
+    text-align: center;
+    color: red;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

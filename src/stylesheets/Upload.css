@@ -1,0 +1,77 @@
+.container {
+    background-color: #282c34;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    position: relative;
+    padding-top: 0px;
+}
+
+.upload {
+    width: 90%;
+    min-height: 90vh;
+}
+
+.upload a {
+    text-decoration: none;
+    color: white
+}
+
+.upload span {
+    display: inline-flex;
+}
+
+.upload span button {
+    width: 200px;
+    height: 50px;
+    font: inherit;
+    color: white;
+    border: none;
+    background-color: inherit;
+    margin-top: 27px;
+    font-size: 20px;
+}
+
+.upload a:hover {
+    color: gray;
+}
+
+
+.upload-form form {
+    width: 90%;
+    font-size: 15px;
+    background-color: rgb(19, 13, 13) !important;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-bottom: 30px;
+}
+
+.upload-form input {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 5px;
+    width: 80%;
+}
+
+.upload-form h2{
+    font-size: 30px;
+    text-align: center;
+}
+
+.upload-form button {
+    color: white;
+    border: none;
+    background-color: inherit;
+    font-size: 20px;
+}
+
+.upload-form button:hover {
+    color: gray
+}

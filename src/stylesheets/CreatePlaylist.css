@@ -1,0 +1,85 @@
+.container {
+    background-color: #282c34;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: row;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    position: relative;
+}
+
+.container form {
+    width: 90%;
+}
+
+.song-table input {
+    width: 20px;
+    height: 20px;
+    margin-top: 20px
+}
+
+#playlist-name {
+    background: none;
+    border: none;
+    font: inherit;
+    color: white;
+    width: 425px;
+}
+
+#playlist-name::placeholder {
+    color: white
+}
+
+#create-btn {
+    height: 50px;
+    font: inherit;
+    color: white;
+    border: none;
+    background-color: inherit;
+    margin-top: 35px;
+    font-size: 20px;
+}
+
+#create-btn:hover {
+    color: gray;
+}
+
+#back-btn:hover {
+    color: gray;
+}
+
+.create-playlists {
+    min-height: 90vh;
+}
+
+#back-btn {
+    width: 200px;
+    height: 50px;
+    font: inherit;
+    color: white;
+    border: none;
+    background-color: inherit;
+    margin-top: 35px;
+    font-size: 20px;
+}
+
+.create-playlists a {
+    text-decoration: none;
+    color: white
+}
+
+.create-playlists span {
+    display: inline-flex !important;
+    flex-direction: row;
+}
+
+.choose-songs {
+    font-size: 15px;
+    background-color: rgb(19, 13, 13) !important;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-bottom: 30px;
+}

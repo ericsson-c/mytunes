@@ -15,7 +15,7 @@ import '../stylesheets/Register.css';
 
 //const apiURL = 'http://mytunes-api.herokuapp.com';
 //const apiURL = 'http://localhost:3000';
-const apiURL = 'http://mytunes-frontend.herokuapp.com';
+const apiURL = 'https://mytunes-frontend.herokuapp.com';
 
 export default function Login(props) {
 

@@ -17,12 +17,6 @@
     "universal-cookie": "^4.0.4",
     "web-vitals": "^2.1.4"
   },
-  "proxies": {
-    "/api/": {
-      "origin": "https://mytunes-api.herokuapp.com",
-      "changeOrigin": "true"
-    }
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

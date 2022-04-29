@@ -34,7 +34,7 @@ class CreatePlaylist extends React.Component {
 
     // fetch all songs when component mounts
     componentDidMount() {
-        fetch('/songs')
+        fetch('/api/songs')
         .then(res => res.json())
         .then(songs => {
             this.setState({songs: songs});
@@ -52,7 +52,7 @@ class CreatePlaylist extends React.Component {
             if (e.target.songs[i].checked) { songs.push(e.target.songs[i].value); }
         }
 
-        fetch('/playlists/create', {
+        fetch('/api/playlists/create', {
             credentials: 'include',
             method: "post",
             headers: { 'Content-Type': 'application/json' },

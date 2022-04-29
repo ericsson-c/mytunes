@@ -94,7 +94,7 @@ class Playlists extends React.Component {
     
     fetchSongs(playlist) {
 
-        fetch('/playlists/' + playlist._id)
+        fetch('/api/playlists/' + playlist._id)
 
         .then(res => res.json())
         .then(songData => this.setState({
@@ -116,7 +116,8 @@ class Playlists extends React.Component {
         console.log('playlist user cookie: ', this.cookie.get('user'));
 
         // ---- FETCH PLAYLIST DATA ---- \\
-        fetch('/playlists', { credentials: 'include' })
+        
+        fetch('/api/playlists', { credentials: 'include' })
         .then(res => res.json())
         .then(playlists => {
 

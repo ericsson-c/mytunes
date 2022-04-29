@@ -53,7 +53,7 @@ class Upload extends React.Component {
 
         //setTimeout(() => console.log(formData), 1000);
         
-        fetch('/upload', {
+        fetch('/api/upload', {
             method: 'post',
             body: formData
 

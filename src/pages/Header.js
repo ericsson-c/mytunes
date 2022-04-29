@@ -40,7 +40,7 @@ export default function Header() {
     */
 
     useEffect(() => {
-      fetch('/getUser', { credentials: 'include' })
+      fetch('/api/getUser', { credentials: 'include' })
       .then(res => res.json())
       .then(userData => {
         // reset user cookie if passport session expired

@@ -29,7 +29,7 @@ export default function Login(props) {
 
         e.preventDefault();
 
-        fetch('/login', {
+        fetch('/api/login', {
 
             method: 'POST',
             credentials: 'include',

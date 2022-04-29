@@ -13,7 +13,8 @@ import Cookie from 'universal-cookie';
 import '../stylesheets/Upload.css';
 
 //const apiURL = 'http://mytunes-api.herokuapp.com'
-const apiURL = 'http://localhost:3000';
+//const apiURL = 'http://localhost:3000';
+const apiURL = 'http://mytunes-frontend.herokuapp.com';
 
 
 class Upload extends React.Component {
@@ -53,7 +54,7 @@ class Upload extends React.Component {
 
         //setTimeout(() => console.log(formData), 1000);
         
-        fetch('/api/upload', {
+        fetch(apiURL + '/api/upload', {
             method: 'post',
             body: formData
 

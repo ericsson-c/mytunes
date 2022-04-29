@@ -17,7 +17,8 @@ import { Link, Navigate } from 'react-router-dom';
 import Cookie from 'universal-cookie';
 
 //const apiURL = 'http://mytunes-api.herokuapp.com';
-const apiURL = 'http://localhost:3000';
+//const apiURL = 'http://localhost:3000';
+const apiURL = 'http://mytunes-frontend.herokuapp.com';
 
 class BrowseSongs extends React.Component {
 
@@ -54,7 +55,7 @@ class BrowseSongs extends React.Component {
     componentDidMount() {
         console.log('user cookie: ', this.cookie.get('user'));
         // fetch all songs
-        fetch('/api/songs', { credentials: 'include'} )
+        fetch(apiURL + '/api/songs', { credentials: 'include'} )
         .then(res => res.json())
         .then(data => {
             this.setState({
@@ -107,7 +108,7 @@ class SongTable extends React.Component {
     async playSong(e, btn) {
         // if there's no current song, or a new song is clicked, make clicked song the current song
         if (!(this.state.song) || e.target.value !== this.state.song.id) {
-            const audio = new Audio('/api/songs/' + e.target.value);
+            const audio = new Audio(apiURL + '/api/songs/' + e.target.value);
             audio.id = e.target.value;
 
             // if there was another song playing, pause it

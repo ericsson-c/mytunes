@@ -13,7 +13,8 @@ import { useCookies } from 'react-cookie';
 import '../stylesheets/Header.css';
 
 //const apiURL = 'http://mytunes-api.herokuapp.com';
-const apiURL = 'http://localhost:3000';
+//const apiURL = 'http://localhost:3000';
+const apiURL = 'http://mytunes-frontend.herokuapp.com';
 
 export default function Header() { 
 
@@ -40,7 +41,7 @@ export default function Header() {
     */
 
     useEffect(() => {
-      fetch('/api/getUser', { credentials: 'include' })
+      fetch(apiURL + '/api/getUser', { credentials: 'include' })
       .then(res => res.json())
       .then(userData => {
         // reset user cookie if passport session expired

@@ -14,8 +14,8 @@ import { Navigate, Link } from 'react-router-dom';
 import '../stylesheets/CreatePlaylist.css';
 import '../stylesheets/Songs.css';
 
-//const apiURL = 'http://mytunes-api.herokuapp.com';
-const apiURL = 'http://localhost:3000';
+const apiURL = 'http://mytunes-api.herokuapp.com';
+//const apiURL = 'http://localhost:3000';
 
 class CreatePlaylist extends React.Component {
 
@@ -34,7 +34,7 @@ class CreatePlaylist extends React.Component {
 
     // fetch all songs when component mounts
     componentDidMount() {
-        fetch('/api/songs')
+        fetch(apiURL + '/api/songs')
         .then(res => res.json())
         .then(songs => {
             this.setState({songs: songs});
@@ -52,7 +52,7 @@ class CreatePlaylist extends React.Component {
             if (e.target.songs[i].checked) { songs.push(e.target.songs[i].value); }
         }
 
-        fetch('/api/playlists/create', {
+        fetch(apiURL + '/api/playlists/create', {
             credentials: 'include',
             method: "post",
             headers: { 'Content-Type': 'application/json' },

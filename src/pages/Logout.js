@@ -11,14 +11,15 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie'
 
 //const apiURL = 'http://mytunes-api.herokuapp.com';
-const apiURL = 'http://localhost:3000';
+//const apiURL = 'http://localhost:3000';
+const apiURL = 'http://mytunes-frontend.herokuapp.com';
 
 export default function Logout() {
 
     const [cookies, setCookies, removeCookies] = useCookies('user');
     const navigate = useNavigate();
 
-    fetch('/api/logout', { credentials: 'include' })
+    fetch(apiURL + '/api/logout', { credentials: 'include' })
 
     .then(res => res.json())
     .then(data => {

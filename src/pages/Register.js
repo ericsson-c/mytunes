@@ -26,7 +26,7 @@ export default function Register() {
 
     function register() {
 
-        fetch(apiURL + '/register', {
+        fetch('/register', {
 
             method: 'POST',
             credentials: 'include',

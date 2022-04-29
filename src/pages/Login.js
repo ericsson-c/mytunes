@@ -13,8 +13,8 @@ import { useCookies } from 'react-cookie';
 
 import '../stylesheets/Register.css';
 
-const apiURL = 'http://mytunes-api.herokuapp.com';
-//const apiURL = 'http://localhost:3000';
+//const apiURL = 'http://mytunes-api.herokuapp.com';
+const apiURL = 'http://localhost:3000';
 
 export default function Login(props) {
 
@@ -29,7 +29,7 @@ export default function Login(props) {
 
         e.preventDefault();
 
-        fetch(apiURL + '/login', {
+        fetch('/login', {
 
             method: 'POST',
             credentials: 'include',

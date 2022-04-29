@@ -16,8 +16,8 @@ import '../stylesheets/Songs.css';
 import { Link, Navigate } from 'react-router-dom';
 import Cookie from 'universal-cookie';
 
-const apiURL = 'http://mytunes-api.herokuapp.com';
-//const apiURL = 'http://localhost:3000';
+//const apiURL = 'http://mytunes-api.herokuapp.com';
+const apiURL = 'http://localhost:3000';
 
 class BrowseSongs extends React.Component {
 
@@ -54,7 +54,7 @@ class BrowseSongs extends React.Component {
     componentDidMount() {
         console.log('user cookie: ', this.cookie.get('user'));
         // fetch all songs
-        fetch(apiURL + '/songs', { credentials: 'include'} )
+        fetch('/songs', { credentials: 'include'} )
         .then(res => res.json())
         .then(data => {
             this.setState({
@@ -66,13 +66,13 @@ class BrowseSongs extends React.Component {
     }
 
     render () {
-        /*
+
         if (!(this.cookie.get('user'))) {
             return (
                 <Navigate to="/login" />
             )
         }
-        */
+
         return (
             <div className="container">
                 <div id="browse-songs">
@@ -107,7 +107,7 @@ class SongTable extends React.Component {
     async playSong(e, btn) {
         // if there's no current song, or a new song is clicked, make clicked song the current song
         if (!(this.state.song) || e.target.value !== this.state.song.id) {
-            const audio = new Audio(apiURL + '/songs/' + e.target.value);
+            const audio = new Audio('/songs/' + e.target.value);
             audio.id = e.target.value;
 
             // if there was another song playing, pause it

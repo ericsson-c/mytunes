@@ -19,8 +19,8 @@ import { Link, Navigate } from 'react-router-dom';
 
 import '../stylesheets/Playlists.css';
 
-const apiURL = 'http://mytunes-api.herokuapp.com';
-//const apiURL = 'http://localhost:3000';
+//sconst apiURL = 'http://mytunes-api.herokuapp.com';
+const apiURL = 'http://localhost:3000';
 
 class Playlists extends React.Component {
     
@@ -94,7 +94,7 @@ class Playlists extends React.Component {
     
     fetchSongs(playlist) {
 
-        fetch(apiURL + '/playlists/' + playlist._id)
+        fetch('/playlists/' + playlist._id)
 
         .then(res => res.json())
         .then(songData => this.setState({
@@ -116,7 +116,7 @@ class Playlists extends React.Component {
         console.log('playlist user cookie: ', this.cookie.get('user'));
 
         // ---- FETCH PLAYLIST DATA ---- \\
-        fetch(apiURL + '/playlists', { credentials: 'include' })
+        fetch('/playlists', { credentials: 'include' })
         .then(res => res.json())
         .then(playlists => {
 

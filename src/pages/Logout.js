@@ -10,7 +10,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie'
 
-const apiURL = 'http://localhost:3001';
+const apiURL = 'https://mytunes-api.herokuapp.com';
 
 export default function Logout() {
 

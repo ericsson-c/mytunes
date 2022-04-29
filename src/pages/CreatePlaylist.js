@@ -14,7 +14,7 @@ import { Navigate, Link } from 'react-router-dom';
 import '../stylesheets/CreatePlaylist.css';
 import '../stylesheets/Songs.css';
 
-const apiURL = 'http://localhost:3001'
+const apiURL = 'https://mytunes-api.herokuapp.com';
 
 class CreatePlaylist extends React.Component {
 

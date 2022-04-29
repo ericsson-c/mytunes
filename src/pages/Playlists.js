@@ -19,7 +19,8 @@ import { Link, Navigate } from 'react-router-dom';
 
 import '../stylesheets/Playlists.css';
 
-const apiURL = 'https://mytunes-api.herokuapp.com';
+const apiURL = 'http://mytunes-api.herokuapp.com';
+//const apiURL = 'http://localhost:3000';
 
 class Playlists extends React.Component {
     
@@ -109,7 +110,10 @@ class Playlists extends React.Component {
     componentDidMount() {
 
         // immediately return if user is not logged in
-        if (!(this.cookie.get('user'))) { return; }
+
+        //if (!(this.cookie.get('user'))) { return; }
+
+        console.log('playlist user cookie: ', this.cookie.get('user'));
 
         // ---- FETCH PLAYLIST DATA ---- \\
         fetch(apiURL + '/playlists', { credentials: 'include' })
@@ -119,7 +123,7 @@ class Playlists extends React.Component {
             // if there was an error fetching, log the err msg then refresh page to prompt a login
             if (playlists.message) {
                 console.log(playlists.message);
-                window.location.reload();
+                //window.location.reload();
             }
 
             // else, set state of initial playlist to first playlist
@@ -145,12 +149,10 @@ class Playlists extends React.Component {
     }
     
     render() {
-        
-        /*
+
         if (!(this.cookie.get('user'))) {
             return <Navigate to='/login' />
         }
-        */
 
         return (
             <div className='container'>

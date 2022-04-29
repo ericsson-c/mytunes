@@ -13,7 +13,8 @@ import { useCookies } from 'react-cookie';
 
 import '../stylesheets/Register.css';
 
-const apiURL = 'https://mytunes-api.herokuapp.com';
+const apiURL = 'http://mytunes-api.herokuapp.com';
+//const apiURL = 'http://localhost:3000';
 
 export default function Login(props) {
 
@@ -50,7 +51,7 @@ export default function Login(props) {
                 setErrMsg(userData.message);
                 console.log(userData.error);
 
-            } console.log(userData.message);
+            } console.log(userData);
         })
         .catch(err => console.log(err));
     }

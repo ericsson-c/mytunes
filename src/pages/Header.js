@@ -12,11 +12,12 @@ import { useCookies } from 'react-cookie';
 
 import '../stylesheets/Header.css';
 
-const apiURL = 'https://mytunes-api.herokuapp.com';
+const apiURL = 'http://mytunes-api.herokuapp.com';
+//const apiURL = 'http://localhost:3000';
 
 export default function Header() { 
 
-    const [cookies, setCookies, removeCookies] = useCookies(['user']);
+    const [cookies, setCookies, removeCookies] = useCookies('user');
     const handleClick = (e) => {
     }
 
@@ -44,6 +45,7 @@ export default function Header() {
       .then(userData => {
         // reset user cookie if passport session expired
         if (!(userData.user)) {
+          console.log('removing user cookie...');
           removeCookies('user', { path: '/' });
         }
       }).catch(err => console.log(err));

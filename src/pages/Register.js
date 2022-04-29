@@ -13,7 +13,8 @@ import { useCookies } from 'react-cookie';
 
 import '../stylesheets/Register.css';
 
-const apiURL = 'https://mytunes-api.herokuapp.com';
+//const apiURL = 'https://mytunes-api.herokuapp.com';
+const apiURL = 'http://localhost:3000';
 
 export default function Register() {
 

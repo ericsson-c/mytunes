@@ -16,7 +16,8 @@ import '../stylesheets/Songs.css';
 import { Link, Navigate } from 'react-router-dom';
 import Cookie from 'universal-cookie';
 
-const apiURL = 'https://mytunes-api.herokuapp.com';
+const apiURL = 'http://mytunes-api.herokuapp.com';
+//const apiURL = 'http://localhost:3000';
 
 class BrowseSongs extends React.Component {
 
@@ -51,14 +52,17 @@ class BrowseSongs extends React.Component {
     }
 
     componentDidMount() {
+        console.log('user cookie: ', this.cookie.get('user'));
         // fetch all songs
-        fetch(apiURL + '/songs')
+        fetch(apiURL + '/songs', { credentials: 'include'} )
         .then(res => res.json())
-        .then(songs => this.setState({
-            songs: songs,
-            displayedSongs: songs
-        }))
-        .catch(err => console.log(err));
+        .then(data => {
+            this.setState({
+            songs: data.songs,
+            displayedSongs: data.songs
+        });
+        console.log('req user: ', data.user);
+        }).catch(err => console.log(err));
     }
 
     render () {

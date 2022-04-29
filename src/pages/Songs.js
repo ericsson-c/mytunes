@@ -103,7 +103,7 @@ class SongTable extends React.Component {
     async playSong(e, btn) {
         // if there's no current song, or a new song is clicked, make clicked song the current song
         if (!(this.state.song) || e.target.value !== this.state.song.id) {
-            const audio = new Audio(apiURL + 'songs/' + e.target.value);
+            const audio = new Audio(apiURL + '/songs/' + e.target.value);
             audio.id = e.target.value;
 
             // if there was another song playing, pause it

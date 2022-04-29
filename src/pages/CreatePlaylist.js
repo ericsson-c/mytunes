@@ -38,6 +38,7 @@ class CreatePlaylist extends React.Component {
         fetch(apiURL + '/api/songs')
         .then(res => res.json())
         .then(songs => {
+            console.log('fetching all songs...');
             this.setState({songs: songs});
         })
         .catch(err => console.log(err));
@@ -124,7 +125,7 @@ class CreatePlaylist extends React.Component {
 
     // when song data is fetched -> create song table
     componentDidUpdate(prevProps, prevState) {
-        
+        console.log('fetched songs, creating display');
         if (prevState.songs !== this.state.songs) {
             this.createSongList(this.state.songs);
         }

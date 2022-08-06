@@ -1,6 +1,6 @@
 .container {
     background-color: #282c34;
-    min-height: 90vh;
+    min-height: 85vh;
     display: flex;
     flex-direction: row;
     font-size: calc(10px + 2vmin);
@@ -23,7 +23,8 @@
     border: none;
     font: inherit;
     color: white;
-    width: 425px;
+    --width: auto;
+    width: var(--width);
 }
 
 #playlist-name::placeholder {
@@ -37,30 +38,32 @@
     border: none;
     background-color: inherit;
     margin-top: 35px;
-    font-size: 20px;
-}
-
-#create-btn:hover {
-    color: gray;
-}
-
-#back-btn:hover {
-    color: gray;
-}
-
-.create-playlists {
-    min-height: 90vh;
+    font-size: inherit;
+    min-width: 5vw;
 }
 
 #back-btn {
-    width: 200px;
+    width: 100vw;
     height: 50px;
     font: inherit;
     color: white;
     border: none;
     background-color: inherit;
     margin-top: 35px;
-    font-size: 20px;
+    font-size: inherit;
+    margin-right: 10px;
+}
+
+#create-btn:hover {
+    color: gray;
+}
+
+#back-btn a:hover {
+    color: gray;
+}
+
+.create-playlists {
+    min-height: 90vh;
 }
 
 .create-playlists a {
@@ -82,4 +85,8 @@
     flex-direction: column;
     padding: 20px;
     padding-bottom: 30px;
+}
+
+.error-msg {
+    width: auto !important;
 }

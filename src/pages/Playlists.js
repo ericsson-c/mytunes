@@ -19,9 +19,7 @@ import { Link, Navigate } from 'react-router-dom';
 
 import '../stylesheets/Playlists.css';
 
-//const apiURL = 'https://mytunes-api.herokuapp.com';
-//const apiURL = 'http://localhost:3000';
-const apiURL = 'https://mytunes-frontend.herokuapp.com';
+const apiURL = process.env.REACT_APP_CLIENT_URL;
 
 class Playlists extends React.Component {
     
@@ -29,21 +27,23 @@ class Playlists extends React.Component {
     
     constructor(props) {
         super(props);
+
+        /*
         this.state = {
-            currentPlaylist: {name: 'Playlist'},
+            currentPlaylist: {name: 'Choose Playlist'},
             userPlaylists: [],
             songs: null,
             displayedSongs: null
         }
-        
-        this.changePlaylist = this.changePlaylist.bind(this);
-        this.generatePlaylistButtons = this.generatePlaylistButtons.bind(this);
-        this.fetchSongs = this.fetchSongs.bind(this);
+        */
+
+        // this.fetchSongs = this.fetchSongs.bind(this);
         this.setState = this.setState.bind(this);
-        this.search = this.search.bind(this);
     }
 
     // dynamically adjust search results as user types in search bar
+
+    /*
     search(e) {
 
         this.setState({
@@ -93,6 +93,7 @@ class Playlists extends React.Component {
         }
     }
     
+    
     fetchSongs(playlist) {
 
         fetch(apiURL + '/api/playlists/' + playlist._id)
@@ -106,13 +107,10 @@ class Playlists extends React.Component {
 
         .catch(err => console.log(err));
     }
+    */
     
     // on page load, fetch playlist data for user and associated song data for the first fetched playlist
     componentDidMount() {
-
-        // immediately return if user is not logged in
-
-        //if (!(this.cookie.get('user'))) { return; }
 
         console.log('playlist user cookie: ', this.cookie.get('user'));
 
@@ -128,23 +126,17 @@ class Playlists extends React.Component {
                 //window.location.reload();
             }
 
-            // else, set state of initial playlist to first playlist
-            console.log("Loading intial playlist...");
+            console.log("All playlists: ", playlists.playlists);
 
-            this.setState({
-                userPlaylists: playlists,
-                currentPlaylist: playlists[0],
-            });
+            // if the user has at least one playlist, redirect to the page for their first playlist
+            if (playlists.playlists.length > 0) {
+                window.location = '/playlists/' + playlists.playlists[0]._id;
+            }
 
-            // ---- POPULATE HTML WITH PLAYLIST OPTIONS FOR USER --- \\
-
-            this.generatePlaylistButtons(playlists);
-            return playlists[0];
-
-        })  // ---- FETCH SONG DATA FOR CURRENT PLAYLIST --- \\
-
-        .then((playlist) => { 
-            if (playlist) { this.fetchSongs(playlist) }
+            // else, redirect to 'Create Playlist'
+            else {
+                window.location = '/create'
+            }
         })
 
         .catch(err => console.log(err));
@@ -153,15 +145,22 @@ class Playlists extends React.Component {
     render() {
 
         if (!(this.cookie.get('user'))) {
-            return <Navigate to='/login' />
+            window.location = '/login';
         }
 
         return (
             <div className='container'>
-                <div id="display-playlists">
+            </div>
+        );
+    }
+}
+
+/*
+
+<div id="display-playlists">
                     <div className="dropdown">
                         <span className="all-songs">
-                            <h1>{this.state.currentPlaylist ? this.state.currentPlaylist.name : 'Choose Playlist'}</h1>
+                            <h1>Create a Playlist</h1>
                             <button className="dropbtn">
                                 <h1 className="caret">&#9660;</h1>
                             </button>
@@ -177,9 +176,8 @@ class Playlists extends React.Component {
                         <SongTable songs={this.state.displayedSongs} key={'Playlists'}/>
                     </div>
                 </div> 
-            </div>
-        );
-    }
-}
+
+
+*/
 
 export default Playlists;

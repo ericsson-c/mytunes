@@ -1,6 +1,6 @@
 .container {
     background-color: #282c34;
-    min-height: 90vh;
+    min-height: 85vh;
     display: flex;
     flex-direction: row;
     /*align-items: center;
@@ -30,7 +30,7 @@
 }
 
 
-.dropdown .dropbtn {
+.dropdown .drop-btn {
     font-size: 16px; 
     border: none;
     outline: none;
@@ -42,34 +42,39 @@
 }
 
 
+/*
 .dropbtn:hover + .dropdown-content {
     display: flex;
-    flex-direction: column;
+    
 }
 
 .dropdown .dropdown-content:hover {
     display: flex;
-    flex-direction: column;
 }
+*/
 
 .dropdown {
     position: relative;
     z-index: 3;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .dropdown-content {
-    max-width: 150px;
     width: auto;
     height: auto;
     padding: 5px;
-    display: none;
-    background-color: rgb(19, 13, 13);
+    display: flex;
+    /*background-color: rgb(19, 13, 13);*/
+    background-color: rgb(78, 78, 78);
     font-size: 15px;
     text-align: left;
-    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
     position: absolute;
-    left: 100px;
-    top: 50px
+    left: 0px;
+    top: 100px;
+    flex-direction: column;
 }
 
 .dropdown-content ul {
@@ -79,7 +84,6 @@
 
 .dropdown-content button:hover {
     background-color: #282c34;
-    
 }
 
 .dropdown-content button {
@@ -107,18 +111,91 @@
     margin-left: 18px;
 }
 
-.plus-btn:hover {
-    background-color: rgb(19, 13, 13);
+.edit-btn {
+    background-color: inherit;
+    border: 2px solid white;
+    border-radius: 20px;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    height: 40px;
+    width: 40px;
+    margin-top: 32px;
+    margin-left: 18px;
+    text-align: center;
 }
 
+.delete-btn {
+    background-color: inherit;
+    border: 2px solid white;
+    border-radius: 20px;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    height: 40px;
+    width: 40px;
+    margin-top: 32px;
+    margin-left: 18px;
+    text-align: center;
+}
+
+.edit-btn p {
+    position: relative;
+    top: -2px;
+}
+
+.delete-btn p {
+    position: relative;
+    top: -2px;
+}
+
+.delete-btn:hover {
+    background-color: rgb(78, 78, 78);
+}
+
+.edit-btn:hover {
+    background-color: rgb(78, 78, 78);
+}
+
+.plus-btn:hover {
+    background-color: rgb(78, 78, 78);
+}
+
+.drop-btn:hover {
+    /*color:  rgb(19, 13, 13);*/
+    color: rgb(78, 78, 78);
+}
+
+.plus-btn:hover + .create-playlist-wrapper {
+    display: inline-flex !important;
+}
+
+.delete-btn:hover + .delete-playlist-wrapper {
+    display: inline-flex !important;
+}
+
+.edit-btn:hover + .edit-playlist-wrapper {
+    display: inline-flex !important;
+}
+
+
+
 .create-playlist {
-    display: none;
-    position: absolute;
+    display: inline-flex;
+    position: relative;
     background-color: rgb(78, 78, 78);
     padding: 5px;
     font-size: 12px;
-    left: 450px;
-    top: 70px
+    height: auto;
+    text-align: center;
+    align-items: center;
+    margin-left: 10px;
+    /*left: 450px;
+    top: 70px*/
 }
 
 .create-playlist a {
@@ -126,9 +203,21 @@
     color: white;
 }
 
-.plus-btn:hover + .create-playlist {
-    display: block;
+.create-playlist-wrapper {
+    display: none !important;
+    align-items: center;
 }
+
+.delete-playlist-wrapper {
+    display: none !important;
+    align-items: center;
+}
+
+.edit-playlist-wrapper {
+    display: none !important;
+    align-items: center;
+}
+
 
 .plus-btn a {
     text-decoration: none;

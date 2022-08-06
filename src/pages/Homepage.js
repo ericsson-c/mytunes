@@ -9,22 +9,47 @@
 import { useCookies } from 'react-cookie';
 import '../stylesheets/Homepage.css';
 
+const apiURL = process.env.REACT_APP_CLIENT_URL;
+
+
 export default function Homepage() {
 
-  return (
-    <div className="homepage">
-      <p id='welcome-prompt'>
-        Welcome to MyTunes
-      </p>
+  const [cookies, setCookies] = useCookies();
 
-      <div className="homepage-text">
-        <p id='main-slogan'>
+  if (cookies.user) {
+
+    return (
+      <div className="homepage">
+
+      <div className='welcome-prompt'>
+        <p className='welcome-prompt-id'>
+          Welcome to MyTunes, {cookies.user.username}.
+        </p>
+        <p className='main-slogan'>
           All the music you need, at your fingertips.
         </p>
-        <p id='login-prompt'>
-          <a href="/login"> Login </a>or <a href="/register"> register </a> to begin.
+        <p className='login-prompt'>
+          Click <a href="/songs"> Browse </a> to start listening.
         </p>
       </div>
-    </div>
-  );
+      </div>
+    );
+  
+  } else {
+    return (
+      <div className="homepage">
+      <div className='welcome-prompt'>
+        <p className='welcome-prompt-id'>
+          Welcome to MyTunes.
+        </p>
+        <p className='main-slogan'>
+          All the music you need, at your fingertips.
+        </p>
+        <p className='login-prompt'>
+          <a href="/login"> Login </a>or <a href="/register"> register </a> to start listening.
+        </p>
+      </div>
+      </div>
+    );
+  }
 }

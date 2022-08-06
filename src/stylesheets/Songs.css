@@ -1,6 +1,6 @@
 .container {
     background-color: #282c34;
-    min-height: 90vh;
+    min-height: 85vh;
     display: flex;
     flex-direction: row;
     /*align-items: center;*/
@@ -9,6 +9,48 @@
     color: white;
     position: relative;
     padding-top: 10px;
+}
+
+.popup-container {
+    position: relative;
+
+}
+
+.options-popup {
+    position: absolute;
+    background-color: rgb(78, 78, 78);
+    font-size: 12px;
+    padding: 5px;
+    border: none;
+    color: white;
+    z-index: 100;
+    min-width: 90px;
+    left: -60px;
+    top: -15px;
+    opacity: 80%;
+}
+
+.options-popup:hover {
+    opacity: 100%;
+}
+
+
+.options-btn {
+    background: none;
+    color: lightgray;
+    opacity: 80%;
+    border: none;
+    font-size: 25px;
+}
+
+.options-btn:hover {
+    color: white;
+    opacity: 100%;
+}
+
+
+.hidden {
+    display: none !important;
 }
 
 #browse-songs span {
@@ -38,7 +80,7 @@
     background-color: rgb(78, 78, 78);
 }
 
-#browse-songs span div {
+.upload-song {
     display: none;
     position: absolute;
     background-color: rgb(78, 78, 78);
@@ -73,16 +115,14 @@
     font-size: 40px;
 }
 
-.song-table {
+.song-table .songs {
     display: flex;
     flex-direction: column !important;
     background-color: rgb(21, 20, 20);
-    padding: 20px;
-    padding-bottom: 40px;
 
 }
 
-.song-table table {
+.song-table .songs {
     border-collapse: collapse;
     background-color: rgb(21, 20, 20);
     /*background-color: #282c34;*/
@@ -108,13 +148,14 @@
     width: 30%;
 }
 
-.song-table tbody tr {
+
+.songs tbody tr {
     /*border: 2px solid rgb(21, 20, 20);*/
     z-index: 5;
     width: 100%;
 }
 
-.song-table tbody td {
+.songs tbody td {
     padding: 20px;
 }
 
@@ -127,5 +168,150 @@
 .song-name {
     width: 40%;
 }
+
+.error-msg {
+    z-index: 1002;
+    position: absolute;
+    font-size: 20px !important;
+}
+
+
+
+/*--------------------------------------*/
+
+
+/*
+.playlists-popup {
+    position: absolute;
+    z-index: 1000;
+    width: auto;
+    padding: 20px;
+    display: none !important;
+    padding-top: 60px;
+    border: 2px solid darkgray;
+}
+*/
+
+.playlists-popup {
+    z-index: 1000;
+    padding: 20px;
+    padding-top: 40px;
+    position: absolute;
+    max-height: 50vh;
+
+    /*
+    width: 300px;
+    height: 500px;
+    left: 50%;
+    top: 15vh;
+    margin-left: -150px;
+    margin-top: -150px;
+    */
+}
+
+
+
+.playlists-popup tbody tr {
+    border:none;
+}
+
+
+.playlists-popup tbody input {
+    left: 12px;
+    border: none;
+}
+
+.playlists-popup-div{
+    position: absolute;
+
+    /*
+    top: -10vh;
+    width: 50%;
+    margin: auto;
+    */
+
+    width: 300px;
+    height: 500px;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
+    
+    opacity: 100% !important;
+}
+
+#playlists-submit {
+    position: relative;
+    z-index: 1001;
+    background-color: #282c34;
+    font-size: 15px !important;
+    font: inherit;
+    color: white;
+    opacity: 80%;
+    left: -15px;
+    top: -5px;
+    /*width: 14vw !important;*/
+}
+
+#playlists-submit:hover {
+    opacity: 100%;
+}
+
+
+#playlists-table-header {
+    border: none !important;
+    font-size: 15px !important;
+    /*background-color: rgb(21, 20, 20) !important*/;
+    background-color: #282c34;
+    position: sticky;
+    top: 0px;
+    left: 10px;
+    text-align: center;
+}
+
+#playlists-table-header-tr {
+    background-color: #282c34;
+    text-align: center;
+}
+
+#x-out {
+    z-index: 1001;
+    /*position: absolute;*/
+    position: relative;
+    left: 10px;
+}
+
+#x-out button {
+    border: none;
+    background-color: inherit;
+}
+
+
+#x-out img {
+    height: 30px;
+    width: 30px;
+    
+    -webkit-filter: grayscale(1) invert(1);
+    filter: grayscale(1) invert(1);
+    
+    opacity: 80%;
+}
+
+#x-out img:hover {
+    opacity: 100%;
+}
+
+.x-and-submit-wrapper {
+    background-color: rgb(21, 20, 20);
+    padding-top: 5px;
+    width: 250px;
+    z-index: 2000;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    top: 40px;
+    justify-content: space-between;
+}
+
 
 

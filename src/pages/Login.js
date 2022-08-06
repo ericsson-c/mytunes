@@ -13,9 +13,7 @@ import { useCookies } from 'react-cookie';
 
 import '../stylesheets/Register.css';
 
-//const apiURL = 'https://mytunes-api.herokuapp.com';
-//const apiURL = 'http://localhost:3000';
-const apiURL = 'https://mytunes-frontend.herokuapp.com';
+const apiURL = process.env.REACT_APP_CLIENT_URL;
 
 export default function Login(props) {
 
@@ -45,12 +43,12 @@ export default function Login(props) {
             if (userData.loggedIn) {
 
                 setCookies('user', userData.user);
-                navigate('/songs');
+                // window.location = '/playlists';
+                window.location = '/songs';
 
             } else {
 
                 setErrMsg(userData.message);
-                console.log(userData.error);
 
             } console.log(userData);
         })
@@ -70,7 +68,7 @@ export default function Login(props) {
                         <input placeholder="Username" type='text' name='username' onChange={(e) => setUsername(e.target.value)}/>
                     </div>
                     <div className="register-form-div">
-                        <input placeholder="Password" type='text' name='password' onChange={(e) => setPassword(e.target.value)}/>
+                        <input placeholder="Password" type='password' name='password' onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                     <div className="register-form-div">
                         <button onClick={loginUser}>Login</button>

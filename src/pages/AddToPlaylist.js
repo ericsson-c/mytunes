@@ -1,6 +1,6 @@
-/* ------------------------- CREATEPLAYLIST.JS -------------------------------
+/* ------------------------- ADDTOPLAYLIST.JS -------------------------------
 
-- Page for creating playlists
+- Page for add playlists
 - At the top of the page, user sets playlist name
 - In song table, user select which songs they want to add to the playlist
 
@@ -17,7 +17,7 @@ import '../stylesheets/Songs.css';
 // 
 const apiURL = process.env.REACT_APP_CLIENT_URL;
 
-class CreatePlaylist extends React.Component {
+class AddToPlaylist extends React.Component {
 
     cookie = new Cookie();
 
@@ -25,7 +25,8 @@ class CreatePlaylist extends React.Component {
         super(props);
         this.state = {
             songs: null,
-            goToPlaylists: false
+            goToPlaylists: false,
+            
         }
 
         this.createSongList = this.createSongList.bind(this);
@@ -38,16 +39,9 @@ class CreatePlaylist extends React.Component {
         .then(res => res.json())
         .then(songs => {
             console.log('fetching all songs...', songs);
-            this.setState({ songs: songs.songs });
+            this.setState({songs: songs.songs});
         })
         .catch(err => console.log(err));
-
-        const playlistName = document.getElementById('playlist-name');
-        /*
-        playlistName.addEventListener("input", () => {
-            this.style.width = this.value.length + 0.5 + 'ch';
-        });
-        */
     }
 
     // when form submits, post new playlist to database
@@ -84,7 +78,7 @@ class CreatePlaylist extends React.Component {
                 name: e.target.name.value
             })
         }).then(res => {
-            // console.log(res.status);
+            console.log(res.status);
             return res.json();
         })
 
@@ -97,13 +91,14 @@ class CreatePlaylist extends React.Component {
                 
                 // log error message 
                 console.log(playlistData.message);
-                const errorMsg = document.createElement("h1");
-                errorMsg.textContent = playlistData.message;
-                document.querySelector(".error-msg").appendChild(errorMsg);
+
+                // & refresh to prompt login
+                // window.location.reload();
 
             } else {
 
-                window.location = '/playlists/' + playlistData.playlist._id;
+                console.log('redirecting to playlist...');
+                window.location = '/playlists';
             }
         })
         .catch(err => console.log(err)); 
@@ -165,13 +160,9 @@ class CreatePlaylist extends React.Component {
                 <form encType="multipart/form-data" onSubmit={this.handleSubmit}>
                     <div className="create-playlists">
                         <span>
-                            <h1><input onChange={ (evt) => {
-                                console.log(evt.target.style.width);
-                                evt.target.style.width = evt.target.value.length + 0.5 + 'ch';
-                            }
-                            } id="playlist-name" name="name" type="text" placeholder="Enter Playlist Name"/></h1>
-                            <button id="create-btn" type="submit">&#10003; Create</button>
-                            <button id="back-btn"><Link to='/playlists'>Back</Link></button>
+                            <h1><input id="playlist-name" name="name" type="text" placeholder="Enter Playlist Name"/></h1>
+                            <button id="back-btn"><Link to='/playlists'>Back to Playlists</Link></button>
+                            <button id="create-btn" type="submit">Create</button>
                         </span>
                         <div className='song-table'>
                             <table>
@@ -189,9 +180,7 @@ class CreatePlaylist extends React.Component {
                                 
                             </table>
                         </div>
-                        <div className="error-msg">
-                            
-                        </div>
+                        
                     </div>
                 </form>
             </div>
@@ -199,4 +188,4 @@ class CreatePlaylist extends React.Component {
     }
 } 
 
-export default CreatePlaylist;
+export default AddToPlaylist;

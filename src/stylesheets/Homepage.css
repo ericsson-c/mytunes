@@ -1,31 +1,87 @@
+/* ------- SLIDE ANIMATION ------- */
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 50%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
 
 
 /* rest of homepage */
 
-#login-prompt a {
+.login-prompt a {
     text-decoration: none;
-    color: blanchedalmond
+    /*color: blanchedalmond*/
+    color: rgb(165, 89, 165);
+    opacity: 80%;
 }
+
+.login-prompt a:hover {
+  opacity: 100%;
+}
+
 
 .homepage {
     background-color: #282c34;
-    min-height: 90vh;
+    min-height: 85vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+    text-align: center;
   }
 
-  #welcome-prompt {
-    font-size: 40px;
+.welcome-prompt-id {
+  font-size: 50px;
+  position: relative;
+  top: -55px;
+  animation: 1s ease-in-out 0s 1 slideInLeft,
+    1s ease-in 0s 1 fadeIn;
+  
+}
+
+.homepage-text {
     position: relative;
-    top: -40px;
-  }
+    /*align-items: center;*/
+    text-align: center;
+}
 
-  .homepage-text {
-      position: relative;
-      align-items: center;
-      text-align: center;
-  }
+.main-slogan {
+  animation: /*0.8s ease-in-out 0s 1 slideInRight,*/
+    1.2s ease-in 0s 1 fadeIn;
+}
+
+.login-prompt {
+  animation: /*0.8s ease-in-out 0s 1 slideInRight,*/
+            2s ease-in 0s 1 fadeIn;
+}
+
+
+
+
+  

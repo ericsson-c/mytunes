@@ -4,10 +4,10 @@ module.exports = function(app) {
   app.use(
     '/api/',
     createProxyMiddleware({
-      target: 'http://mytunes-api.herokuapp.com',
+      target: process.env.REACT_APP_API_URL,
       changeOrigin: true,
       onProxyReq: function(request) {
-        request.setHeader("origin", "http://mytunes-api.herokuapp.com");
+        request.setHeader("origin", process.env.REACT_APP_API_URL);
       },
       pathRewrite: {
         '^/api' : ''

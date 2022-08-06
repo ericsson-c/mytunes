@@ -10,9 +10,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie'
 
-//const apiURL = 'https://mytunes-api.herokuapp.com';
-//const apiURL = 'http://localhost:3000';
-const apiURL = 'https://mytunes-frontend.herokuapp.com';
+const apiURL = process.env.REACT_APP_CLIENT_URL;
 
 export default function Logout() {
 
@@ -25,7 +23,8 @@ export default function Logout() {
     .then(data => {
 
         removeCookies('user', { path: '/' });
-        navigate('/');
+        // navigate('/');
+        window.location = '/';
 
     });
 }

@@ -54,6 +54,11 @@ i {
     margin-left: 30px;
     margin-top: 0px;
     background-color: rgb(78, 78, 78);
+    opacity: 80%;
+}
+
+.logout:hover {
+    opacity: 100%;
 }
 
 .logout a {

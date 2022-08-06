@@ -1,8 +1,7 @@
-/* ------------------------- CREATEPLAYLIST.JS -------------------------------
+/* ------------------------- UPDATEPLAYLIST.JS -------------------------------
 
-- Page for creating playlists
-- At the top of the page, user sets playlist name
-- In song table, user select which songs they want to add to the playlist
+- Page for updating playlists
+- User can select songs to add and/or delete from the playlist
 
 --------------------------------------------------------------------
 */
@@ -10,43 +9,77 @@
 import React from 'react';
 import Cookie from 'universal-cookie';
 import { Navigate, Link } from 'react-router-dom';
+import { withRouter } from './Playlist_id';
 
 import '../stylesheets/CreatePlaylist.css';
 import '../stylesheets/Songs.css';
+import '../stylesheets/UpdatePlaylist.css';
 
 // 
 const apiURL = process.env.REACT_APP_CLIENT_URL;
 
-class CreatePlaylist extends React.Component {
+class UpdatePlaylist extends React.Component {
 
     cookie = new Cookie();
 
     constructor(props) {
         super(props);
         this.state = {
-            songs: null,
+            name: "No Playlist Selected",
+            id: "62ea79808c526ea2cf9b74bc",
+            // songs: null,
+            songsInPlaylist: null,
             goToPlaylists: false
         }
 
         this.createSongList = this.createSongList.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleAddBtn = this.handleAddBtn.bind(this);
+        this.handleBackBtn = this.handleBackBtn.bind(this);
     }
 
-    // fetch all songs when component mounts
-    componentDidMount() {
+    // fetch songs in playlist when component mounts
+    async componentDidMount() {
+
+        const { id } = this.props.router.params;
+
+        try {
+
+            // const songsRes = await fetch(apiURL + '/api/songs' + id);
+            const playlistsRes  = await fetch(apiURL + '/api/playlists/' + id);
+    
+            if (/*songsRes.status !== 200 ||*/ playlistsRes.status !== 200) {
+                throw new Error('Error fetching playlist data.');
+            }
+
+            // const allSongs = (await songsRes.json()).songs;
+            const playlistData = (await playlistsRes.json());
+            
+
+            this.setState({
+                //songs: allSongs,
+                songsInPlaylist: playlistData.songs,
+                name: playlistData.name,
+                id: id
+            }, () => {
+                // console.log(this.state);
+            })
+
+        } catch (err) {
+
+            console.log(err.message);
+            return;
+        }
+
+        /*
         fetch(apiURL + '/api/songs')
         .then(res => res.json())
         .then(songs => {
-            console.log('fetching all songs...', songs);
-            this.setState({ songs: songs.songs });
+            this.setState({songs: songs.songs});
+
+            fetch()
         })
         .catch(err => console.log(err));
-
-        const playlistName = document.getElementById('playlist-name');
-        /*
-        playlistName.addEventListener("input", () => {
-            this.style.width = this.value.length + 0.5 + 'ch';
-        });
         */
     }
 
@@ -60,28 +93,26 @@ class CreatePlaylist extends React.Component {
 
         if (typeof(e.target.songs[0]) === "undefined") {
             
-            if (e.target.songs.checked) { 
+            if (!e.target.songs.checked) { 
                 songs.push(e.target.songs.value); 
             } 
         
         } else {
 
             for (let i = 0; i < e.target.songs.length; i++) {
-                if (e.target.songs[i].checked) { 
+                if (!e.target.songs[i].checked) { 
                     songs.push(e.target.songs[i].value); 
                 } 
             }
         }
 
 
-
-        fetch(apiURL + '/api/playlists/create', {
+        fetch(apiURL + '/api/playlists/edit/' + this.state.id, {
             credentials: 'include',
             method: "post",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                songs: songs,
-                name: e.target.name.value
+                songsToKeep: songs,
             })
         }).then(res => {
             // console.log(res.status);
@@ -97,17 +128,29 @@ class CreatePlaylist extends React.Component {
                 
                 // log error message 
                 console.log(playlistData.message);
-                const errorMsg = document.createElement("h1");
-                errorMsg.textContent = playlistData.message;
-                document.querySelector(".error-msg").appendChild(errorMsg);
 
             } else {
 
-                window.location = '/playlists/' + playlistData.playlist._id;
+                console.log(playlistData);
+                // redirect to page for the playlist that was updated
+                window.location = '/playlists/' + this.state.id;
             }
         })
         .catch(err => console.log(err)); 
     }
+
+
+    handleAddBtn(evt) {
+
+        window.location = '/add/' + this.state.id;
+    }
+
+
+    handleBackBtn(evt) {
+        
+        window.location = '/playlists/' + this.state.id;
+    }
+
 
     // function for creating rows in the song table
     createSongRow(song, table) {
@@ -146,10 +189,49 @@ class CreatePlaylist extends React.Component {
         }
     }
 
-    // when song data is fetched -> create song table
+
+    createAllSongRow(song, table) {
+
+        const tr = document.createElement('tr');
+
+        const title = document.createElement('td');
+        const artist = document.createElement('td');
+        const album = document.createElement('td');
+
+        title.textContent = song.title;
+        title.className = 'song-name';
+        artist.textContent = song.artist;
+        album.textContent = song.album;
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.name = 'songs';
+        checkbox.value = song._id;
+
+        tr.appendChild(title);
+        tr.appendChild(artist);
+        tr.appendChild(album);
+
+        tr.appendChild(checkbox);
+        table.appendChild(tr);
+    }
+
+
+    createAllSongList(songs) {
+
+        const table = document.querySelector(".song-table tbody");
+
+        for (let i = 0; i < songs.length; i++) {
+            this.createSongRow(songs[i], table);
+        }
+    }
+
+
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.songs !== this.state.songs) {
-            this.createSongList(this.state.songs);
+
+        // when song data is fetched -> create song table
+        if (prevState.songs !== this.state.songsInPlaylist) {
+            this.createSongList(this.state.songsInPlaylist);
         }
     }
     
@@ -165,13 +247,10 @@ class CreatePlaylist extends React.Component {
                 <form encType="multipart/form-data" onSubmit={this.handleSubmit}>
                     <div className="create-playlists">
                         <span>
-                            <h1><input onChange={ (evt) => {
-                                console.log(evt.target.style.width);
-                                evt.target.style.width = evt.target.value.length + 0.5 + 'ch';
-                            }
-                            } id="playlist-name" name="name" type="text" placeholder="Enter Playlist Name"/></h1>
-                            <button id="create-btn" type="submit">&#10003; Create</button>
-                            <button id="back-btn"><Link to='/playlists'>Back</Link></button>
+                            <h1>{this.state.name}</h1>
+                            <button id="add-btn" onClick={this.handleAddBtn}>+ Add Songs</button>
+                            <button id="update-btn" type="submit">&#10003; Update</button>
+                            <button id="back-btn" onClick={this.handleBackBtn}>Back</button>
                         </span>
                         <div className='song-table'>
                             <table>
@@ -180,7 +259,7 @@ class CreatePlaylist extends React.Component {
                                         <td>TITLE</td>
                                         <td>ARTIST</td>
                                         <td>ALBUM</td>
-                                        <td>ADD?</td>
+                                        <td>DELETE?</td>
                                     </tr>
                                 </thead>
 
@@ -189,9 +268,7 @@ class CreatePlaylist extends React.Component {
                                 
                             </table>
                         </div>
-                        <div className="error-msg">
-                            
-                        </div>
+                        
                     </div>
                 </form>
             </div>
@@ -199,4 +276,4 @@ class CreatePlaylist extends React.Component {
     }
 } 
 
-export default CreatePlaylist;
+export default withRouter(UpdatePlaylist);

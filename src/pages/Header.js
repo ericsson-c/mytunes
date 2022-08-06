@@ -5,20 +5,40 @@
 --------------------------------------------------------------------
 */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef,  } from 'react';
 import logo from '../logo.png';
 import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
 import '../stylesheets/Header.css';
 
-//const apiURL = 'https://mytunes-api.herokuapp.com';
-//const apiURL = 'http://localhost:3000';
-const apiURL = 'https://mytunes-frontend.herokuapp.com';
+const apiURL = process.env.REACT_APP_CLIENT_URL;
+
+// --------------------------------------------- \\
+// custom useInterval hook supplied by ....
+const useInterval = (callback, delay) => {
+  const savedCallback = useRef();
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    const tick = () => {
+      savedCallback.current();
+    }
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+};
+// --------------------------------------------- \\
 
 export default function Header() { 
 
     const [cookies, setCookies, removeCookies] = useCookies('user');
+    const [state, setState] = useState(0);
     const handleClick = (e) => {
     }
 
@@ -40,8 +60,26 @@ export default function Header() {
     - ** will add if I have time **
     */
 
-    useEffect(() => {
+    
+    useInterval(() => {
+      
       fetch(apiURL + '/api/getUser', { credentials: 'include' })
+      .then(res => res.json())
+      .then(userData => {
+        // reset user cookie if passport session expired
+        if (!(userData.user)) {
+          console.log('removing user cookie...');
+          removeCookies('user', { path: '/' });
+        }
+      })
+      .catch(err => console.log(err));
+    }, 30000) // poll every 30 seconds
+    
+
+
+    /*
+    useEffect(() => {
+      fetch(apiURL + '/getUser', { credentials: 'include' })
       .then(res => res.json())
       .then(userData => {
         // reset user cookie if passport session expired
@@ -51,6 +89,7 @@ export default function Header() {
         }
       }).catch(err => console.log(err));
     });
+    */
     
 
     return (
@@ -65,7 +104,7 @@ export default function Header() {
         <ul className='nav-links'>
           <li className="login"> <Link onClick={handleClick}
           to={cookies.user ? '#' : '/login'}>
-          {cookies.user ? `Hi, ${cookies.user}` : 'Login'}
+          {cookies.user ? `Hi, ${cookies.user.username}` : 'Login'}
           </Link> </li>
           <LogoutButton />
           <li> <Link to='/playlists'>Playlists</Link> </li>

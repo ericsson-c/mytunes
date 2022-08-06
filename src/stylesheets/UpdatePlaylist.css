@@ -1,0 +1,52 @@
+#back-btn {
+    height: 50px;
+    font: inherit;
+    color: white;
+    border: none;
+    background-color: inherit;
+    margin-top: 35px;
+    margin-right: 10px;
+    font-size: inherit;
+    text-align: center;
+    width: auto !important;
+    min-width: 10vw;
+}
+
+
+
+#add-btn {
+    min-width: 10vw;
+    /*width: 200px;*/
+    height: 50px;
+    font: inherit;
+    color: white;
+    border: none;
+    margin-left: 5vw;
+    background-color: inherit;
+    margin-top: 35px;
+    
+}
+
+#update-btn {
+    min-width: 10vw;
+    /*width: 200px;*/
+    height: 50px;
+    font: inherit;
+    color: white;
+    border: none;
+    /*margin-left: 50px;*/
+    background-color: inherit;
+    margin-top: 35px;
+}
+
+#add-btn:hover {
+    color: gray;
+}
+
+#update-btn:hover {
+    color: gray;
+}
+
+#back-btn:hover {
+    color: gray;
+}

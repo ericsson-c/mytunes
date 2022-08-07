@@ -64,7 +64,7 @@ export default function Register() {
                     }}/>
                 </div>
                 <div className="register-form-div">
-                    <input placeholder="Password" type='text' name='password' onChange={(e) => setPassword(e.target.value)}/>
+                    <input placeholder="Password" type='password' name='password' onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <div className="register-form-div">
                     <button onClick={e => {

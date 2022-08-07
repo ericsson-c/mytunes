@@ -189,7 +189,7 @@ class CreatePlaylist extends React.Component {
                                 
                             </table>
                         </div>
-                        <div className="error-msg">
+                        <div className="error-msg playlist-err">
                             
                         </div>
                     </div>

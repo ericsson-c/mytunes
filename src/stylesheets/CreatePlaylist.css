@@ -87,6 +87,10 @@
     padding-bottom: 30px;
 }
 
-.error-msg {
+.playlist-err {
+    position: relative !important;
+    bottom: 0px !important;
     width: auto !important;
 }
+
+

@@ -142,7 +142,7 @@ class UpdatePlaylist extends React.Component {
 
     handleAddBtn(evt) {
 
-        window.location = '/add/' + this.state.id;
+        window.location = '/songs'
     }
 
 

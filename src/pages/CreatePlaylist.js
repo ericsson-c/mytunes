@@ -97,9 +97,13 @@ class CreatePlaylist extends React.Component {
                 
                 // log error message 
                 console.log(playlistData.message);
+                /*
                 const errorMsg = document.createElement("h1");
                 errorMsg.textContent = playlistData.message;
                 document.querySelector(".error-msg").appendChild(errorMsg);
+                */
+               // alert user
+               alert(playlistData.message);
 
             } else {
 
@@ -189,7 +193,7 @@ class CreatePlaylist extends React.Component {
                                 
                             </table>
                         </div>
-                        <div className="error-msg playlist-err">
+                        <div className="error-msg playlist-err hidden">
                             
                         </div>
                     </div>

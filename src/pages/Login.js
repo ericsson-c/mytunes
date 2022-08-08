@@ -17,6 +17,8 @@ const apiURL = process.env.REACT_APP_CLIENT_URL;
 
 export default function Login(props) {
 
+    console.log("apiURL: ", apiURL);
+
     const [cookies, setCookies] = useCookies(['user']);
     const [errorMsg, setErrMsg] = useState("");
     const [username, setUsername] = useState("");

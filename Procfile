@@ -1,1 +1,1 @@
-web: heroku-start
+web: react-scripts start

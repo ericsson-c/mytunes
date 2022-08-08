@@ -47,6 +47,5 @@
   },
   "devDependencies": {
     "dotenv-webpack": "^8.0.0"
-  },
-  "proxy": "https://mytunes-api.herokuapp.com"
+  }
 }

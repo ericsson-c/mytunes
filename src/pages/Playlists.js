@@ -129,14 +129,20 @@ class Playlists extends React.Component {
             console.log("All playlists: ", playlists.playlists);
 
             // if the user has at least one playlist, redirect to the page for their first playlist
-            if (playlists.playlists.length > 0) {
+            if ( playlists.playlists.length > 0 ) {
                 window.location = '/playlists/' + playlists.playlists[0]._id;
             }
 
+            else {
+                window.location = '/playlists';
+            }
+
+            /*
             // else, redirect to 'Create Playlist'
             else {
                 window.location = '/create'
             }
+            */
         })
 
         .catch(err => console.log(err));

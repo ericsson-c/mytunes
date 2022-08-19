@@ -139,7 +139,7 @@ class Playlists extends React.Component {
 
             // else, redirect to 'Create Playlist'
             else {
-                if (confirm("You don't have any playlists. Would you like to create one?")) {
+                if (window.confirm("You don't have any playlists. Would you like to create one?")) {
                     window.location = '/create'
                 } else {
                     window.location = '/songs';

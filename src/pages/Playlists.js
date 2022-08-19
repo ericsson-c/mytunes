@@ -173,11 +173,13 @@ class Playlists extends React.Component {
                     
                     <input id="search-bar" onChange={this.search} placeholder="Search for a song, artist or album..." type="text" name="searched-song"/>
                     <div className='song-table'>
-                        <SongTable songs={this.state.displayedSongs} key={'Playlists'}/>
+                        
                     </div>
                 </div> 
             </div>
         );
+
+        // <SongTable songs={this.state.displayedSongs} key={'Playlists'}/>
     }
 }
 

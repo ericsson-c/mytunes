@@ -161,7 +161,7 @@ class Playlists extends React.Component {
     }
 }
 
-/*
+
 
 <div id="display-playlists">
                     <div className="dropdown">
@@ -184,6 +184,6 @@ class Playlists extends React.Component {
                 </div> 
 
 
-*/
+
 
 export default Playlists;

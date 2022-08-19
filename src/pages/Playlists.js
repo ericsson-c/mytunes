@@ -28,22 +28,23 @@ class Playlists extends React.Component {
     constructor(props) {
         super(props);
 
-        /*
+        
         this.state = {
             currentPlaylist: {name: 'Choose Playlist'},
             userPlaylists: [],
             songs: null,
             displayedSongs: null
         }
-        */
+        
 
         // this.fetchSongs = this.fetchSongs.bind(this);
         this.setState = this.setState.bind(this);
+        this.search = this.search.bind(this);
     }
 
     // dynamically adjust search results as user types in search bar
 
-    /*
+    
     search(e) {
 
         this.setState({
@@ -107,7 +108,7 @@ class Playlists extends React.Component {
 
         .catch(err => console.log(err));
     }
-    */
+    
     
     // on page load, fetch playlist data for user and associated song data for the first fetched playlist
     componentDidMount() {
@@ -156,14 +157,7 @@ class Playlists extends React.Component {
 
         return (
             <div className='container'>
-            </div>
-        );
-    }
-}
-
-
-
-<div id="display-playlists">
+                <div id="display-playlists">
                     <div className="dropdown">
                         <span className="all-songs">
                             <h1>Create a Playlist</h1>
@@ -182,6 +176,14 @@ class Playlists extends React.Component {
                         <SongTable songs={this.state.displayedSongs} key={'Playlists'}/>
                     </div>
                 </div> 
+            </div>
+        );
+    }
+}
+
+
+
+                
 
 
 

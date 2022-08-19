@@ -127,10 +127,9 @@ class Playlists extends React.Component {
             // if there was an error fetching, log the err msg then refresh page to prompt a login
             if (playlists.message) {
                 console.log(playlists.message);
-                //window.location.reload();
             }
 
-            console.log("All playlists: ", playlists.playlists);
+            // console.log("All playlists: ", playlists.playlists);
 
             // if the user has at least one playlist, redirect to the page for their first playlist
             if ( playlists.playlists.length > 0 ) {

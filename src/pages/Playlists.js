@@ -25,6 +25,8 @@ class Playlists extends React.Component {
     
     cookie = new Cookie();
     
+    /*
+
     constructor(props) {
         super(props);
 
@@ -69,7 +71,7 @@ class Playlists extends React.Component {
 
 
     changePlaylist(evt) {
-
+        
         const newCurrentPlaylist = this.state.userPlaylists[evt.target.value]
         this.setState({currentPlaylist: newCurrentPlaylist});
 
@@ -109,6 +111,7 @@ class Playlists extends React.Component {
         .catch(err => console.log(err));
     }
     
+    */
     
     // on page load, fetch playlist data for user and associated song data for the first fetched playlist
     componentDidMount() {
@@ -134,16 +137,14 @@ class Playlists extends React.Component {
                 window.location = '/playlists/' + playlists.playlists[0]._id;
             }
 
-            else {
-                window.location = '/playlists';
-            }
-
-            /*
             // else, redirect to 'Create Playlist'
             else {
-                window.location = '/create'
+                if (confirm("You don't have any playlists. Would you like to create one?")) {
+                    window.location = '/create'
+                } else {
+                    window.location = '/songs';
+                }
             }
-            */
         })
 
         .catch(err => console.log(err));
@@ -157,6 +158,13 @@ class Playlists extends React.Component {
 
         return (
             <div className='container'>
+            </div>
+        );
+
+    }
+}
+
+/*
                 <div id="display-playlists">
                     <div className="dropdown">
                         <span className="all-songs">
@@ -173,15 +181,11 @@ class Playlists extends React.Component {
                     
                     <input id="search-bar" onChange={this.search} placeholder="Search for a song, artist or album..." type="text" name="searched-song"/>
                     <div className='song-table'>
-                        
+                        <SongTable songs={this.state.displayedSongs} key={'Playlists'}/>
                     </div>
                 </div> 
-            </div>
-        );
 
-        // <SongTable songs={this.state.displayedSongs} key={'Playlists'}/>
-    }
-}
+*/
 
 
 

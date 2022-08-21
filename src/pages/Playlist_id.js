@@ -163,8 +163,6 @@ class PlaylistID extends React.Component {
                 songs: songData.songs,
                 displayedSongs: songData.songs
             });
-
-            console.log(songData);
         })
 
         .catch(err => console.log(err));
@@ -172,8 +170,6 @@ class PlaylistID extends React.Component {
     
     // on page load, fetch playlist data for user and associated song data for the first fetched playlist
     componentDidMount() {
-
-        console.log('playlistID user cookie: ', this.cookie.get('user'));
 
         // ---- FETCH PLAYLIST DATA ---- \\
         
@@ -186,18 +182,27 @@ class PlaylistID extends React.Component {
                 console.log(playlists.message);
             }
 
+            /*
             this.setState({
                 userPlaylists: playlists.playlists,
-            }, );
+            }, () => {
+                console.log("userPlaylists: ", this.state.userPlaylists)
+            });
+            */
 
             // ---- POPULATE HTML WITH PLAYLIST OPTIONS FOR USER (NOT INCLUDING CURRENT PLAYLIST) --- \\
             const otherPlaylists = playlists.playlists.filter(pl => {
-                console.log(pl._id, this.props.router.params.id)
+                // console.log(pl._id, this.props.router.params.id)
                 return pl._id.toString() !== this.props.router.params.id;
             });
             
             this.generatePlaylistButtons(otherPlaylists);
-            //return playlists[0];
+
+            this.setState({
+                userPlaylists: otherPlaylists,
+            }, () => {
+                // console.log("userPlaylists: ", this.state.userPlaylists)
+            });;
 
         })  // ---- FETCH SONG DATA FOR CURRENT PLAYLIST --- \\
 
@@ -217,6 +222,7 @@ class PlaylistID extends React.Component {
             // use window.location to lose app state
             // (keeping this.state.differentPlaylist !== null forces an infinite loop)
             window.location = url;
+            // return <Navigate to={url} />
         }
 
         return (

@@ -170,7 +170,6 @@ class CreatePlaylist extends React.Component {
                     <div className="create-playlists">
                         <span>
                             <h1><input onChange={ (evt) => {
-                                console.log(evt.target.style.width);
                                 evt.target.style.width = evt.target.value.length + 0.5 + 'ch';
                             }
                             } id="playlist-name" name="name" type="text" placeholder="Enter Playlist Name"/></h1>

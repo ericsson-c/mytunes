@@ -30,7 +30,7 @@ class Upload extends React.Component {
     }
 
     handleUpload(e) {
-
+        
         try {
             if (e.target.files[0].type !== 'audio/mpeg') {
                 alert("File must have an .mp3 extension (must be an mp3 file).");
